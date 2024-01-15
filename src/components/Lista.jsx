@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     nomeUsuario: {
         fontSize: 22,
         textAlign: 'left',
-        color: '#000'
+        color: '#010101'
     },
     fotoPerfil: {
         width: 50,

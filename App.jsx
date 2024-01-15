@@ -7,7 +7,7 @@ export default function App() {
   const feed = [
     {
       id: '1',
-      nome: 'Charles Edward',
+      nome: 'Duduzinho',
       descricao: 'Mais um dia de muitos bugs :)',
       imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png',
       imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto1.png',
