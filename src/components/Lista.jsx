@@ -3,25 +3,48 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
 
 function Lista({ data }) {
-    const [userData, setUserData] = useState(null)
+    const [userData, setUserData] = useState(data)
 
+
+    function carregaIcone(likeada) {
+        return likeada ? require('../img/likeada.png') : require('../img/like.png')
+    }
+
+    function mostrarLikes() {
+        let { likers } = userData;
+        if (likers <= 0) {
+            return;
+        }
+        return (
+            <Text style={styles.likes}>{likers} {likers > 1 ? 'curtidas' : 'curtida'}</Text>
+        )
+
+    }
+
+    function like() {
+        if (userData.likeada === true) {
+            setUserData({ ...userData, likeada: false, likers: userData.likers - 1 })
+        } else {
+            setUserData({ ...userData, likeada: true, likers: userData.likers + 1 })
+        }
+    }
 
     return (
         <View style={styles.areaFeed}>
 
             <View style={styles.viewPerfil}>
-                <Image source={{ uri: data.imgperfil }} style={styles.fotoPerfil}></Image>
-                <Text style={styles.nomeUsuario}>{data.nome}</Text>
+                <Image source={{ uri: userData.imgperfil }} style={styles.fotoPerfil}></Image>
+                <Text style={styles.nomeUsuario}>{userData.nome}</Text>
             </View>
             <Image
                 resizeMode='cover'
                 style={styles.fotoPublicacao}
-                source={{ uri: data.imgPublicacao }}
+                source={{ uri: userData.imgPublicacao }}
             />
             <View style={styles.areaBtn}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={like}>
                     <Image
-                        source={require('../img/like.png')}
+                        source={carregaIcone(userData.likeada)}
                         style={styles.iconeLike}
                     />
                 </TouchableOpacity>
@@ -32,9 +55,10 @@ function Lista({ data }) {
                     />
                 </TouchableOpacity>
             </View>
+            {mostrarLikes()}
             <View style={styles.viewRodape}>
-                <Text style={styles.nomeRodape}>{data.nome}</Text>
-                <Text style={styles.descRodape}>{data.descricao}</Text>
+                <Text style={styles.nomeRodape}>{userData.nome}</Text>
+                <Text style={styles.descRodape}>{userData.descricao}</Text>
             </View>
         </View>
     )
@@ -71,7 +95,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 8,
         padding: 5,
-        justifyContent: 'space-between',
         alignItems: 'center'
     }, iconeLike: {
         height: 33,
@@ -90,6 +113,9 @@ const styles = StyleSheet.create({
     nomeRodape: {
         fontSize: 18,
         fontWeight: 'bold'
+    }, likes: {
+        fontWeight: 'bold',
+        marginLeft: 5
     }
 })
 

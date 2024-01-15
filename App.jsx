@@ -11,13 +11,13 @@ export default function App() {
       descricao: 'Mais um dia de muitos bugs :)',
       imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png',
       imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto1.png',
-      likeada: false,
-      likers: 0
+      likeada: true,
+      likers: 1
     },
     {
       id: '2',
       nome: 'Matheus',
-      descricao: 'Premiado pelos homens rsrsrs!!!!!',
+      descricao: 'Premiado pelos Homens rsrsrsrssr!!!!!',
       imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil2.png',
       imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto2.png',
       likeada: false,
